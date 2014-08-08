@@ -1,0 +1,30 @@
+{
+	"name": "msignal",
+	"version": "0.0.0",
+	"description": "Monadic signals for asynchronous and reactive programming",
+	"main": "lib.js",
+	"scripts": {
+		"test": "node test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/j201/msignal"
+	},
+	"keywords": [
+		"signal",
+		"frp",
+		"reactive",
+		"promise",
+		"async",
+		"asynchronous",
+		"monad"
+	],
+	"devDependencies": {
+		"tape": "~2.14.0"
+	},
+	"author": "j201",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/j201/msignal/issues"
+	}
+}

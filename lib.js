@@ -35,6 +35,13 @@ function signal(resolver) {
 				});
 			});
 		},
+		fold: function(f, i) {
+			var acc = i;
+			return self.fmap(function(x) {
+				acc = f(acc, x);
+				return acc;
+			});
+		},
 		listen: function(f) {
 			targets.push(f);
 			cache.forEach(function(x) {
