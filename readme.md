@@ -1,4 +1,4 @@
-#msignal
+#m-signal
 
 Monadic signals for asynchronous and reactive programming. Still under development, but should be usable.
 
