@@ -1,6 +1,6 @@
 {
 	"name": "m-signal",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Monadic signals for asynchronous and reactive programming",
 	"main": "lib.js",
 	"scripts": {

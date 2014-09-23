@@ -7,9 +7,9 @@ type Signal<T> = {
 	listen: (T => void) => void
 };
 signal :: <T> ((T => void) => void) => Signal<T>;
-signal.lift :: <U> U => Signal<U>
+signal.unit :: <U> U => Signal<U>
 signal.combine :: <T, U,...> [Signal<T>, Signal<U>,...] => Signal<[T, U,...]>
-signal.flift :: <T, U,...,R> ((T, U,...) => R) => ((Signal<T>, Signal<U>,...) => Signal<R>)
+signal.lift :: <T, U,...,R> ((T, U,...) => R) => ((Signal<T>, Signal<U>,...) => Signal<R>)
 */
 
 function signal(source) {
@@ -71,7 +71,7 @@ function signal(source) {
 	return self;
 }
 
-signal.lift = function(x) {
+signal.unit = function(x) {
 	return signal(function(broadcast) { broadcast(x); });
 };
 
@@ -82,10 +82,10 @@ signal.combine = function(/*...ss*/) {
 				return xs.concat([y]);
 			};
 		}).apply(s);
-	}, signal.lift([]));
+	}, signal.unit([]));
 };
 
-signal.flift = function(f) {
+signal.lift = function(f) {
 	return function(/*...ss*/) {
 		return signal.combine.apply(null, arguments)
 			.fmap(function (xs) {

@@ -8,7 +8,7 @@ Monadic signals for asynchronous and reactive programming. Still under developme
 
 Creates a signal. `source` should be a function that takes one argument: a function that `source` calls when it wants to add a value to the signal.
 
-**signal.lift(value)**
+**signal.unit(value)**
 
 Creates a signal with `value` as its only value. (Part of being a monad, and equivalent to monadic `return`.)
 
@@ -16,7 +16,7 @@ Creates a signal with `value` as its only value. (Part of being a monad, and equ
 
 Takes a number of signals and combines them into one signal that broadcasts the current value of each signal as an array when any signal changes.
 
-**signal.flift(f)**
+**signal.lift(f)**
 
 Takes a function and returns an equivalent where each argument and the return value are all signals containing the same type as the original function.
 
@@ -57,9 +57,9 @@ type Signal<T> = {
 	listen: (T => void) => void
 };
 signal :: <T> ((T => void) => void) => Signal<T>;
-signal.lift :: <U> U => Signal<U>
+signal.unit :: <U> U => Signal<U>
 signal.combine :: <T, U,...> [Signal<T>, Signal<U>,...] => Signal<[T, U,...]>
-signal.flift :: <T, U,...,R> ((T, U,...) => R) => ((Signal<T>, Signal<U>,...) => Signal<R>)
+signal.lift :: <T, U,...,R> ((T, U,...) => R) => ((Signal<T>, Signal<U>,...) => Signal<R>)
 ```
 
 ##Examples
